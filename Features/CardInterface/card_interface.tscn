@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://lpakvaofoidn"]
+
+[ext_resource type="Script" path="res://Features/CardInterface/card_interface.gd" id="1_wyf25"]
+[ext_resource type="Texture2D" uid="uid://cop8t73wqabim" path="res://icon.svg" id="2_0ryxl"]
+
+[node name="CardInterface" type="CanvasLayer"]
+script = ExtResource("1_wyf25")
+
+[node name="CardTray" type="BoxContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -143.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 30
+
+[node name="Deck" type="TextureRect" parent="CardTray"]
+layout_mode = 2
+texture = ExtResource("2_0ryxl")
+expand_mode = 2
+
+[node name="Hand" type="BoxContainer" parent="CardTray"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="EndTurnButton" type="Button" parent="CardTray"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "End Turn"
+
+[connection signal="pressed" from="CardTray/EndTurnButton" to="." method="_end_turn"]
