@@ -1,7 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpxqlesoi0wuv"]
+[gd_scene load_steps=5 format=3 uid="uid://bpxqlesoi0wuv"]
 
 [ext_resource type="PackedScene" uid="uid://b425p5v0uckgl" path="res://Features/TurnManager/turn_manager.tscn" id="1_prjg1"]
+[ext_resource type="PackedScene" uid="uid://dqig0ruy5ltgr" path="res://Features/Component/health_component.tscn" id="2_1aler"]
+[ext_resource type="Script" path="res://Features/Cards/CardManager.gd" id="2_6qdtv"]
+[ext_resource type="Script" path="res://Features/Cards/Deck.gd" id="3_1wbub"]
 
 [node name="Gameplay" type="Node2D"]
 
 [node name="TurnManager" parent="." instance=ExtResource("1_prjg1")]
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="HealthComponent" parent="Player" instance=ExtResource("2_1aler")]
+
+[node name="Spirit" type="Node2D" parent="."]
+
+[node name="HealthComponent" parent="Spirit" instance=ExtResource("2_1aler")]
+
+[node name="CardManager" type="Node" parent="."]
+script = ExtResource("2_6qdtv")
+
+[node name="Deck" type="Node" parent="CardManager"]
+script = ExtResource("3_1wbub")
