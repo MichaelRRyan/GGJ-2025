@@ -29,7 +29,6 @@ func setup_cards(cards : Array) -> void:
 		
 		interactable.setup(card)
 		interactable.connect("card_played", _on_card_played.bind(interactable))
-		interactable.modulate.r = randf_range(0, 1) # TEMP: Change card colour so we can tell when we draw new cards
 
 
 #-------------------------------------------------------------------------------

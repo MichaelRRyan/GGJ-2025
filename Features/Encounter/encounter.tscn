@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfxcvq13dhr0n"]
+[gd_scene load_steps=9 format=3 uid="uid://dfxcvq13dhr0n"]
 
 [ext_resource type="Script" path="res://Features/Encounter/Encounter.gd" id="1_dcat6"]
 [ext_resource type="PackedScene" uid="uid://b425p5v0uckgl" path="res://Features/TurnManager/turn_manager.tscn" id="1_ic1e4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dqig0ruy5ltgr" path="res://Features/Component/health_component.tscn" id="3_8leue"]
 [ext_resource type="PackedScene" uid="uid://c7kr7a00copnf" path="res://Features/HealthBar/health_bar.tscn" id="6_0rfqi"]
 [ext_resource type="Texture2D" uid="uid://cop8t73wqabim" path="res://icon.svg" id="7_tsc4v"]
+[ext_resource type="Texture2D" uid="uid://blsehpidm40ah" path="res://Features/Encounter/background.png" id="8_17wk5"]
 
 [node name="Encounter" type="Node2D"]
 script = ExtResource("1_dcat6")
@@ -16,6 +17,11 @@ script = ExtResource("1_dcat6")
 [node name="CardManager" parent="." instance=ExtResource("3_0ndc0")]
 
 [node name="CardInterface" parent="." instance=ExtResource("2_53jat")]
+
+[node name="BackgroundImage" type="Sprite2D" parent="."]
+position = Vector2(571, 317)
+scale = Vector2(0.609259, 0.609259)
+texture = ExtResource("8_17wk5")
 
 [node name="Player" type="Node2D" parent="."]
 
@@ -36,7 +42,7 @@ offset_bottom = 40.0
 grow_vertical = 1
 
 [node name="Spirit" type="Node2D" parent="."]
-position = Vector2(613, 264)
+position = Vector2(564, 305)
 metadata/_edit_group_ = true
 
 [node name="HealthComponent" parent="Spirit" instance=ExtResource("3_8leue")]
