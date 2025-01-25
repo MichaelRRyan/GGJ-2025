@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5tgtb8bf22n2"]
-
-[ext_resource type="Texture2D" uid="uid://cop8t73wqabim" path="res://icon.svg" id="1_j40ad"]
-
-[node name="Card" type="TextureRect"]
-texture = ExtResource("1_j40ad")
-expand_mode = 2

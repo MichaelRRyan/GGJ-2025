@@ -26,5 +26,7 @@ script = ExtResource("2_6qdtv")
 [node name="Deck" type="Node" parent="CardManager"]
 script = ExtResource("3_1wbub")
 
-[connection signal="draw_cards" from="TurnManager" to="CardInterface" method="draw_cards"]
+[connection signal="draw_cards" from="TurnManager" to="CardManager" method="draw_cards"]
+[connection signal="card_played" from="CardInterface" to="CardManager" method="play_card"]
 [connection signal="turn_ended" from="CardInterface" to="TurnManager" method="_on_card_interface_turn_ended"]
+[connection signal="turn_ended" from="CardInterface" to="CardManager" method="_on_card_interface_turn_ended"]
