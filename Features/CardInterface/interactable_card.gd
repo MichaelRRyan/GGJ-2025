@@ -1,6 +1,19 @@
+class_name InteractableCard
 extends Control
 
 signal card_played
+
+var _card : Card = null
+
+
+#-------------------------------------------------------------------------------
+func setup(card : Card) -> void:
+	_card = card
+
+
+#-------------------------------------------------------------------------------
+func get_card() -> Card:
+	return _card
 
 
 #-------------------------------------------------------------------------------
