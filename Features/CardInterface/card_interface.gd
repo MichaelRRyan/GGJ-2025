@@ -33,18 +33,6 @@ func setup_cards(cards : Array) -> void:
 
 
 #-------------------------------------------------------------------------------
-func draw_cards() -> void:
-	var no_cards_to_draw = 5 # We want this info to be coming from somewhere else later
-	
-	for _i in no_cards_to_draw:
-		var card : Control = _s_InteractableCard.instantiate()
-		_n_hand.add_child(card)
-		
-		card.connect("card_played", _on_card_played.bind(card))
-		card.modulate.r = randf_range(0, 1) # TEMP: Change card colour so we can tell when we draw new cards
-
-
-#-------------------------------------------------------------------------------
 func _end_turn() -> void:
 	_discard_all()
 	turn_ended.emit()

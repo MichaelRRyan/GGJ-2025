@@ -28,6 +28,7 @@ func _ready():
 	_draw_deck.add_card(damage_card_spirit)
 	_draw_deck.add_card(damage_card_spirit)
 	_draw_deck.add_card(damage_card_spirit)
+	_draw_deck.add_card(damage_card_spirit)
 
 
 #-------------------------------------------------------------------------------
