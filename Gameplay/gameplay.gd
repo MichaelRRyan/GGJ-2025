@@ -10,11 +10,9 @@ func _ready() -> void:
 	start_encounter()
 
 func initialise_deck():
-	var spirit_name = "Spirit"
-
 	# Add multiple cards to PersistentDeck
 	for i in range(5):
-		PersistentDeck.add_card(CardFactory.get_damage_card(spirit_name))
+		PersistentDeck.add_card(CardFactory.get_damage_spirit_card())
 
 func start_encounter():
 	encounter_scene = EncounterScene.instantiate()

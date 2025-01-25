@@ -19,3 +19,8 @@ config/icon="res://icon.svg"
 
 PersistentDeck="*res://Features/Cards/Deck.gd"
 GameState="*res://Gameplay/game_state.gd"
+
+[display]
+
+window/size/mode=2
+window/stretch/mode="canvas_items"
