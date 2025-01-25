@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5tgtb8bf22n2"]
+
+[ext_resource type="Texture2D" uid="uid://cop8t73wqabim" path="res://icon.svg" id="1_j40ad"]
+[ext_resource type="Script" path="res://Features/CardInterface/interactable_card.gd" id="1_v5c2u"]
+
+[node name="InteractableCard" type="Control"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_v5c2u")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 220.0
+texture_normal = ExtResource("1_j40ad")
+stretch_mode = 0
+
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_pressed"]

@@ -23,8 +23,8 @@ texture = ExtResource("2_0ryxl")
 expand_mode = 2
 
 [node name="Hand" type="BoxContainer" parent="CardTray"]
-custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 alignment = 1
 
 [node name="EndTurnButton" type="Button" parent="CardTray"]
