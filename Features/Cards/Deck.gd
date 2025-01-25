@@ -22,3 +22,8 @@ func draw(num_cards : int) -> Array:
 			break
 	
 	return draw_cards
+
+		
+func shuffle() -> void:
+	# Shuffle the array
+	_cards.shuffle()

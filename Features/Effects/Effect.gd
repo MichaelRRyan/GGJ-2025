@@ -1,8 +1,8 @@
 extends Resource
 class_name Effect
 
-# Player or Spirit
-var target: Object = null
+# Player or Spirit string that we later use to find the entity to affect
+var target_string: String
 
 func execute():
 	# Abstract method. To be overridden by child classes.
