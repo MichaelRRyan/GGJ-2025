@@ -29,7 +29,6 @@ func setup_cards(cards : Array) -> void:
 		
 		interactable.setup(card)
 		interactable.connect("card_played", _on_card_played.bind(interactable))
-		interactable.modulate.r = randf_range(0, 1) # TEMP: Change card colour so we can tell when we draw new cards
 
 
 #-------------------------------------------------------------------------------
@@ -42,8 +41,13 @@ func _end_turn() -> void:
 func _on_card_played(interactable_card : InteractableCard) -> void:
 	# TODO: Need to validate if the card can be played.
 	if is_instance_valid(interactable_card):
-		card_played.emit(interactable_card.get_card())
-		interactable_card.queue_free()
+		var card = interactable_card.get_card()
+		var action_point_component : ActionPointsComponent = GameState.playerEntity.get_node("ActionPointsComponent")
+		if action_point_component.current_action_points >= card.get_card_action_cost():
+			card_played.emit(card)
+			interactable_card.queue_free()
+		else:
+			print("Insufficient Action Points")
 
 
 #-------------------------------------------------------------------------------

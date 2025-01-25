@@ -1,16 +1,21 @@
-static func create_card(name: String, description: String, effect: Effect) -> Card:
+static func create_card(name: String, description: String, effects: Array) -> Card:
 	# Create the card with the name, description and assign the effect
 	var card = Card.new()
 	card.name = name
 	card.description = description
-	card.effect = effect
+	for effect in effects:
+		card.effects.append(effect)
 
 	return card
 	
 
-static func get_damage_card(target : String) -> Card:
+static func get_damage_spirit_card() -> Card:
 	var damage_effect = DamageEffect.new()
-	damage_effect.target_string = target
-	var damage_card = create_card("DamageCard", "Deal damage to the player.", damage_effect)
+	var action_points_effect = ActionPointEffect.new()
+	var exhaustion_effect = ExhaustionEffect.new()
+	damage_effect.target_name = GameState.TargetName.SPIRIT
+	action_points_effect.target_name = GameState.TargetName.PLAYER
+	exhaustion_effect.target_name = GameState.TargetName.PLAYER
+	var effects = [damage_effect, action_points_effect, exhaustion_effect]
+	var damage_card = create_card("DamageCard", "Deal damage to the player.", effects)
 	return damage_card
-	

@@ -28,6 +28,8 @@ func draw_cards():
 
 #-------------------------------------------------------------------------------
 func play_card(card : Card):
+	# Check if we can play here
+
 	card.play()
 	_discard_deck.add_card(card)
 	_hand_cards.erase(card) # Doesn't delete the card, just removes it from the hand.
@@ -35,6 +37,9 @@ func play_card(card : Card):
 
 #-------------------------------------------------------------------------------
 func _on_card_interface_turn_ended() -> void:
+	var action_point_component : ActionPointsComponent = GameState.playerEntity.get_node("ActionPointsComponent")
+	action_point_component.reset()
+	
 	_discard_deck.add_cards(_hand_cards)
 	_hand_cards.clear()
 

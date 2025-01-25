@@ -9,6 +9,14 @@ var _card : Card = null
 #-------------------------------------------------------------------------------
 func setup(card : Card) -> void:
 	_card = card
+	
+	if randi() % 2 == 0:
+		$TextureButton/CardIcon.texture = load("res://Features/Cards/scrub.png")
+	else:
+		$TextureButton/CardIcon.texture = load("res://Features/Cards/shampoo.png")
+	
+	$TextureButton/ActionPointsLabel.text = str(card.get_card_action_cost())
+	$TextureButton/ExhaustionLabel.text = str(card.get_card_exhaustion_cost())
 
 
 #-------------------------------------------------------------------------------
@@ -18,7 +26,7 @@ func get_card() -> Card:
 
 #-------------------------------------------------------------------------------
 func _on_mouse_entered() -> void:
-	$TextureButton.position.y = -75
+	$TextureButton.position.y = -95
 
 
 #-------------------------------------------------------------------------------
