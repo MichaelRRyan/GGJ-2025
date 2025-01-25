@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfxcvq13dhr0n"]
+[gd_scene load_steps=10 format=3 uid="uid://dfxcvq13dhr0n"]
 
 [ext_resource type="Script" path="res://Features/Encounter/Encounter.gd" id="1_dcat6"]
 [ext_resource type="PackedScene" uid="uid://b425p5v0uckgl" path="res://Features/TurnManager/turn_manager.tscn" id="1_ic1e4"]
 [ext_resource type="PackedScene" uid="uid://lpakvaofoidn" path="res://Features/CardInterface/card_interface.tscn" id="2_53jat"]
-[ext_resource type="PackedScene" uid="uid://5p2d4q285u3m" path="res://Features/Cards/card_manager.tscn" id="3_0ndc0"]
+[ext_resource type="PackedScene" uid="uid://ds25e0iuelde8" path="res://Features/Cards/card_manager.tscn" id="3_0ndc0"]
 [ext_resource type="PackedScene" uid="uid://dqig0ruy5ltgr" path="res://Features/Component/health_component.tscn" id="3_8leue"]
 [ext_resource type="PackedScene" uid="uid://c7kr7a00copnf" path="res://Features/HealthBar/health_bar.tscn" id="6_0rfqi"]
+[ext_resource type="Script" path="res://Features/Component/ActionPointsComponent.gd" id="7_on6gb"]
 [ext_resource type="Texture2D" uid="uid://cop8t73wqabim" path="res://icon.svg" id="7_tsc4v"]
 [ext_resource type="Texture2D" uid="uid://blsehpidm40ah" path="res://Features/Encounter/background.png" id="8_17wk5"]
 
@@ -41,6 +42,9 @@ offset_right = 0.0
 offset_bottom = 40.0
 grow_vertical = 1
 
+[node name="ActionPointsComponent" type="Node" parent="Player"]
+script = ExtResource("7_on6gb")
+
 [node name="Spirit" type="Node2D" parent="."]
 position = Vector2(564, 305)
 metadata/_edit_group_ = true
@@ -67,5 +71,3 @@ texture = ExtResource("7_tsc4v")
 [connection signal="card_played" from="CardInterface" to="CardManager" method="play_card"]
 [connection signal="turn_ended" from="CardInterface" to="TurnManager" method="_on_card_interface_turn_ended"]
 [connection signal="turn_ended" from="CardInterface" to="CardManager" method="_on_card_interface_turn_ended"]
-[connection signal="health_changed" from="Player/HealthComponent" to="Player/CanvasLayer/Bar" method="_on_health_component_health_changed"]
-[connection signal="health_changed" from="Spirit/HealthComponent" to="Spirit/Bar" method="_on_health_component_health_changed"]

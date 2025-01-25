@@ -15,8 +15,8 @@ func setup(card : Card) -> void:
 	else:
 		$TextureButton/CardIcon.texture = load("res://Features/Cards/shampoo.png")
 	
-	$TextureButton/ActionPointsLabel.text = str(randi_range(1, 3))
-	$TextureButton/ExhaustionLabel.text = str(randi_range(10, 30))
+	$TextureButton/ActionPointsLabel.text = str(card.get_card_action_cost())
+	$TextureButton/ExhaustionLabel.text = str(card.get_card_action_cost())
 
 
 #-------------------------------------------------------------------------------
