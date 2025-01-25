@@ -12,3 +12,7 @@ func draw() -> Card:
 	else:
 		print("Deck is empty!")
 		return null
+		
+func shuffle() -> void:
+	# Shuffle the array
+	cards.shuffle()

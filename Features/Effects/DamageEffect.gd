@@ -4,6 +4,7 @@ class_name DamageEffect
 var damage_amount = 10
 
 func execute():
+	var target = GameState.getEffectTarget(target_string)
 	if target:
 		var health = target.get_node("HealthComponent")
 		if health:

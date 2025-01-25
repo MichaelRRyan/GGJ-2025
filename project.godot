@@ -14,3 +14,8 @@ config/name="GGJ-2025"
 run/main_scene="res://Gameplay/gameplay.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+PersistentDeck="*res://Features/Cards/Deck.gd"
+GameState="*res://Gameplay/game_state.gd"
