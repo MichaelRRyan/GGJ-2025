@@ -20,3 +20,11 @@ func get_card_action_cost() -> int:
 			return effect.action_point_cost
 	
 	return 0
+	
+
+func get_card_exhaustion_cost() -> int:
+	for effect in effects:
+		if effect is ExhaustionEffect:
+			return effect.exhaustion_cost
+	
+	return 0

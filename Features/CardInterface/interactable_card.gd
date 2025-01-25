@@ -16,7 +16,7 @@ func setup(card : Card) -> void:
 		$TextureButton/CardIcon.texture = load("res://Features/Cards/shampoo.png")
 	
 	$TextureButton/ActionPointsLabel.text = str(card.get_card_action_cost())
-	$TextureButton/ExhaustionLabel.text = str(card.get_card_action_cost())
+	$TextureButton/ExhaustionLabel.text = str(card.get_card_exhaustion_cost())
 
 
 #-------------------------------------------------------------------------------
