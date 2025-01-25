@@ -1,34 +1,14 @@
 extends Node
 
-var _draw_deck := Deck.new()
+var _draw_deck : Deck = null
 var _discard_deck := Deck.new()
 var _hand_cards := []
 var _max_hand_size : int = 5
 
 
-func create_card(name: String, description: String, effect: Effect) -> Card:
-	# Create the card with the name, description and assign the effect
-	var card = Card.new()
-	card.name = name
-	card.description = description
-	card.effect = effect
-
-	return card
-
-
-func _ready():
-	var spirit = get_parent().get_node("Spirit")
-
-	# Create a damage card that damage the Spirit
-	var damage_effect = DamageEffect.new()
-	damage_effect.target = spirit
-	var damage_card_spirit = create_card("DamageCard", "Deal damage to the player.", damage_effect)
-
-	_draw_deck.add_card(damage_card_spirit)
-	_draw_deck.add_card(damage_card_spirit)
-	_draw_deck.add_card(damage_card_spirit)
-	_draw_deck.add_card(damage_card_spirit)
-	_draw_deck.add_card(damage_card_spirit)
+#-------------------------------------------------------------------------------
+func _ready() -> void:
+	_draw_deck = PersistentDeck
 
 
 #-------------------------------------------------------------------------------

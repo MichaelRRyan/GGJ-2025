@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 #-------------------------------------------------------------------------------
-func _change_state(new_state : int) -> void:
+func _change_state(new_state : TurnState) -> void:
 	
 	# Handles the state change (will implement more here later)
 	match new_state:
