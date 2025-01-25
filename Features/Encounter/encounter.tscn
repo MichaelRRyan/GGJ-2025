@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfxcvq13dhr0n"]
+[gd_scene load_steps=8 format=3 uid="uid://dfxcvq13dhr0n"]
 
 [ext_resource type="Script" path="res://Features/Encounter/Encounter.gd" id="1_dcat6"]
 [ext_resource type="PackedScene" uid="uid://b425p5v0uckgl" path="res://Features/TurnManager/turn_manager.tscn" id="1_ic1e4"]
 [ext_resource type="PackedScene" uid="uid://lpakvaofoidn" path="res://Features/CardInterface/card_interface.tscn" id="2_53jat"]
 [ext_resource type="PackedScene" uid="uid://5p2d4q285u3m" path="res://Features/Cards/card_manager.tscn" id="3_0ndc0"]
 [ext_resource type="PackedScene" uid="uid://dqig0ruy5ltgr" path="res://Features/Component/health_component.tscn" id="3_8leue"]
+[ext_resource type="PackedScene" uid="uid://c7kr7a00copnf" path="res://Features/HealthBar/health_bar.tscn" id="6_0rfqi"]
+[ext_resource type="Texture2D" uid="uid://cop8t73wqabim" path="res://icon.svg" id="7_tsc4v"]
 
 [node name="Encounter" type="Node2D"]
 script = ExtResource("1_dcat6")
@@ -19,11 +21,45 @@ script = ExtResource("1_dcat6")
 
 [node name="HealthComponent" parent="Player" instance=ExtResource("3_8leue")]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
+
+[node name="Bar" parent="Player/CanvasLayer" instance=ExtResource("6_0rfqi")]
+anchors_preset = 10
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 40.0
+grow_vertical = 1
+
 [node name="Spirit" type="Node2D" parent="."]
+position = Vector2(613, 264)
+metadata/_edit_group_ = true
 
 [node name="HealthComponent" parent="Spirit" instance=ExtResource("3_8leue")]
+
+[node name="Bar" parent="Spirit" instance=ExtResource("6_0rfqi")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -56.0
+offset_top = 71.0
+offset_right = 56.0
+offset_bottom = 90.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Spirit"]
+texture = ExtResource("7_tsc4v")
 
 [connection signal="draw_cards" from="TurnManager" to="CardManager" method="draw_cards"]
 [connection signal="card_played" from="CardInterface" to="CardManager" method="play_card"]
 [connection signal="turn_ended" from="CardInterface" to="TurnManager" method="_on_card_interface_turn_ended"]
 [connection signal="turn_ended" from="CardInterface" to="CardManager" method="_on_card_interface_turn_ended"]
+[connection signal="health_changed" from="Player/HealthComponent" to="Player/CanvasLayer/Bar" method="_on_health_component_health_changed"]
+[connection signal="health_changed" from="Spirit/HealthComponent" to="Spirit/Bar" method="_on_health_component_health_changed"]

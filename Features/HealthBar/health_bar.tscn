@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Features/HealthBar/health_bar.gd" id="1_wdo3g"]
 
-[node name="Bar" type="ProgressBar"]
+[node name="HealthBar" type="ProgressBar"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
