@@ -4,7 +4,9 @@ class_name Card
 # Name and description for UI
 var name: String
 var description: String
+var texture_path: String
 var effects : Array = []
+
 
 func play():
 	for effect in effects:

@@ -59,6 +59,30 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "25"
 horizontal_alignment = 1
 
+[node name="CardName" type="Label" parent="TextureButton"]
+offset_left = 42.0
+offset_top = 42.0
+offset_right = 108.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Card Name"
+horizontal_alignment = 1
+
+[node name="CardDescription" type="Label" parent="TextureButton"]
+offset_left = 34.0
+offset_top = 154.0
+offset_right = 120.0
+offset_bottom = 229.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Applies 
+Conditioner
+ to the target."
+horizontal_alignment = 1
+autowrap_mode = 3
+max_lines_visible = 5
+
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="TextureButton" to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_pressed"]

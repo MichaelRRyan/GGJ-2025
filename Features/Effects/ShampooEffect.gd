@@ -1,5 +1,5 @@
 extends Effect
-class_name SoapEffect
+class_name ShampooEffect
 
 var statusDuration = 1
 
@@ -8,6 +8,6 @@ func execute():
 	if target:
 		var statuses = target.get_node("StatusesComponent")
 		if statuses:
-			statuses.apply_status("Soaped", statusDuration)
+			statuses.apply_status("Shampooed", statusDuration)
 		else:
 			print("Error: Target does not have StatusesComponent!")

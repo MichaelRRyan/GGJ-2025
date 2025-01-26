@@ -10,9 +10,16 @@ func _ready() -> void:
 	start_encounter()
 
 func initialise_deck():
-	# Add multiple cards to PersistentDeck
-	for i in range(5):
-		PersistentDeck.add_card(CardFactory.get_damage_spirit_card())
+	# Add cards to the persistent deck
+	
+	PersistentDeck.add_card(CardFactory.get_scrub_spirit_card())
+	PersistentDeck.add_card(CardFactory.get_wash_down_spirit_card())
+	PersistentDeck.add_card(CardFactory.get_scrub_spirit_card())
+	PersistentDeck.add_card(CardFactory.get_wash_down_spirit_card())
+	PersistentDeck.add_card(CardFactory.get_soap_card())
+	PersistentDeck.add_card(CardFactory.get_conditioner_card())
+	PersistentDeck.add_card(CardFactory.get_coffee_card())
+	PersistentDeck.add_card(CardFactory.get_shampoo_card())
 
 func start_encounter():
 	encounter_scene = EncounterScene.instantiate()
