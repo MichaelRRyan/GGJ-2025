@@ -6,6 +6,7 @@ const EncounterScene = preload("res://Features/Encounter/encounter.tscn")
 var encounter_scene : Encounter = null
 
 func _ready() -> void:
+	randomize()
 	initialise_deck()
 	start_encounter()
 
