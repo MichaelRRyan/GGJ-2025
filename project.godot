@@ -24,3 +24,7 @@ GameState="*res://Gameplay/game_state.gd"
 
 window/size/mode=2
 window/stretch/mode="canvas_items"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
