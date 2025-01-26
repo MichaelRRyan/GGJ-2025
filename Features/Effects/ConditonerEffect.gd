@@ -1,13 +1,18 @@
 extends Effect
 class_name ConditionerEffect
 
-var statusDuration = 1
+var base_damage: int = 10
 
 func execute():
 	var target = GameState.getEffectTarget(target_name)
 	if target:
 		var statuses = target.get_node("StatusesComponent")
+		var actual_damage = base_damage
 		if statuses:
-			statuses.apply_status("Conditoned", statusDuration)
+			actual_damage = statuses.modify_damage("ConditionerEffect", base_damage)
+		
+		var health = target.get_node("HealthComponent")
+		if health:
+			health.modify(-actual_damage)
 		else:
-			print("Error: Target does not have StatusesComponent!")
+			print("Error: Target does not have a HealthComponent!")

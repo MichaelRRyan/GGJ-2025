@@ -11,7 +11,13 @@ func setup(card : Card) -> void:
 	_card = card
 	
 	$TextureButton/CardIcon.texture = load(card.texture_path)
-	$TextureButton/ExhaustionLabel.text = str(card.get_card_exhaustion_cost())
+	var exhaustion_cost = card.get_card_exhaustion_cost()
+	if exhaustion_cost > 0:
+		$TextureButton/ExhaustionLabel.text = str(exhaustion_cost)
+	else:
+		get_node("TextureButton/ExhaustionIcon").queue_free()
+		get_node("TextureButton/ExhaustionLabel").queue_free()
+
 	$TextureButton/ActionPointsLabel.text = str(card.get_card_action_cost())
 	$TextureButton/CardName.text = card.name
 	$TextureButton/CardDescription.text = card.description

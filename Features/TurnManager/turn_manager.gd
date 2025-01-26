@@ -1,6 +1,7 @@
 extends Node
 
 signal draw_cards
+signal spirits_turn_started
 
 enum TurnState {
 	NONE = -1,
@@ -36,7 +37,7 @@ func _change_state(new_state : TurnState) -> void:
 			_change_state(TurnState.STANDBY) # Later we will want a delay
 		TurnState.SPIRITS_TURN:
 			print("TurnState: Spirits Turn")
-			_change_state(TurnState.DRAW) # Later we will want logic here
+			spirits_turn_started.emit()
 	
 	# Changes the state variable
 	_turn_state = new_state
@@ -46,12 +47,17 @@ func _change_state(new_state : TurnState) -> void:
 func _on_card_interface_turn_ended() -> void:
 	var player = GameState.getEffectTarget(GameState.TargetName.PLAYER)
 	var spirit = GameState.getEffectTarget(GameState.TargetName.SPIRIT)
-	if player:
-		var player_statuses = player.get_node("StatusesComponent")
-		if player_statuses:
-			player_statuses.decrement_statuses()
 	if spirit:
 		var spirit_statuses = spirit.get_node("StatusesComponent")
 		if spirit_statuses:
 			spirit_statuses.decrement_statuses()
 	_change_state(TurnState.SPIRITS_TURN)
+
+
+#-------------------------------------------------------------------------------
+func _on_spirit_turn_finished() -> void:
+	_change_state(TurnState.DRAW)
+
+
+
+#-------------------------------------------------------------------------------
