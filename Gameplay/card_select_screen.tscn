@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdl31r7ue4u4g"]
+[gd_scene load_steps=3 format=3 uid="uid://dl0cus0n53m6f"]
 
 [ext_resource type="Texture2D" uid="uid://c7oejspbj3ffp" path="res://Features/Cards/cardwbubble.png" id="1_7md3c"]
 [ext_resource type="Script" path="res://Gameplay/card_select.gd" id="1_hc6uu"]
