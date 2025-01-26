@@ -1,7 +1,7 @@
 extends Node
 class_name ActionPointsComponent
 
-signal action_points_changed(new_health, max_health)
+signal action_points_changed(new_action_points, max_action_points)
 
 var max_action_points: int = 3
 var current_action_points: int

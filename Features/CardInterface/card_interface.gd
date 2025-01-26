@@ -17,12 +17,17 @@ signal card_played(card : Card)
 func setup_cards(cards : Array) -> void:
 	_discard_all()
 	
+	var count = 0
 	for card in cards:
+		if count >= 5:
+			break  # Exit the loop after 5 iterations
 		var interactable : InteractableCard = _s_InteractableCard.instantiate()
 		_n_hand.add_child(interactable)
-		
+
 		interactable.setup(card)
 		interactable.connect("card_played", _on_card_played.bind(interactable))
+		count += 1
+
 
 
 #-------------------------------------------------------------------------------

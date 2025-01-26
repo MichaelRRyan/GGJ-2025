@@ -10,13 +10,11 @@ var _card : Card = null
 func setup(card : Card) -> void:
 	_card = card
 	
-	if randi() % 2 == 0:
-		$TextureButton/CardIcon.texture = load("res://Features/Cards/scrub.png")
-	else:
-		$TextureButton/CardIcon.texture = load("res://Features/Cards/shampoo.png")
-	
-	$TextureButton/ActionPointsLabel.text = str(card.get_card_action_cost())
+	$TextureButton/CardIcon.texture = load(card.texture_path)
 	$TextureButton/ExhaustionLabel.text = str(card.get_card_exhaustion_cost())
+	$TextureButton/ActionPointsLabel.text = str(card.get_card_action_cost())
+	$TextureButton/CardName.text = card.name
+	$TextureButton/CardDescription.text = card.description
 
 
 #-------------------------------------------------------------------------------

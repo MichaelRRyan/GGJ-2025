@@ -42,6 +42,8 @@ func _on_card_interface_turn_ended() -> void:
 	var action_point_component : ActionPointsComponent = GameState.playerEntity.get_node("ActionPointsComponent")
 	action_point_component.reset()
 	
+	# Update entities active Statuses?
+	
 	_discard_deck.add_cards(_hand_cards)
 	_hand_cards.clear()
 
