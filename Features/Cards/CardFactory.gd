@@ -52,9 +52,13 @@ static func get_coffee_card() -> Card:
 	var action_points_effect = ActionPointEffect.new()
 	action_points_effect.target_name = GameState.TargetName.PLAYER
 	
+	var exhaustion_effect = ExhaustionEffect.new()
+	exhaustion_effect.target_name = GameState.TargetName.PLAYER
+	exhaustion_effect.exhaustion_cost = 0
+	
 	var texture_path = "res://Features/Cards/coffee.png"
 	
-	var effects = [coffee_effect, action_points_effect]
+	var effects = [coffee_effect, action_points_effect, exhaustion_effect]
 	
 	var damage_card = create_card("Coffee", "Release " + str(coffee_effect.exhaustion_released) + " Exhaustion.", texture_path, effects)
 	return damage_card
