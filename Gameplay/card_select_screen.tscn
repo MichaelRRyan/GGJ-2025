@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdl31r7ue4u4g"]
+
+[ext_resource type="Texture2D" uid="uid://c7oejspbj3ffp" path="res://Features/Cards/cardwbubble.png" id="1_7md3c"]
+[ext_resource type="Script" path="res://Gameplay/card_select.gd" id="1_hc6uu"]
+
+[node name="CardSelectScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hc6uu")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card1" type="Button" parent="BoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+icon = ExtResource("1_7md3c")
+flat = true
+
+[node name="Card2" type="Button" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+icon = ExtResource("1_7md3c")
+flat = true
+
+[node name="Card3" type="Button" parent="BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+icon = ExtResource("1_7md3c")
+flat = true
+
+[connection signal="pressed" from="BoxContainer/Card1" to="." method="_on_card_1_pressed"]
+[connection signal="pressed" from="BoxContainer/Card2" to="." method="_on_card_2_pressed"]
+[connection signal="pressed" from="BoxContainer/Card3" to="." method="_on_card_3_pressed"]

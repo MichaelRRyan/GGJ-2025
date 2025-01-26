@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=3 uid="uid://d24c4q8u4f8gs"]
+
+[ext_resource type="Script" path="res://Gameplay/next_screen.gd" id="1_057c3"]
+
+[node name="NextScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_057c3")
+
+[node name="Loot" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="Loot"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.505385, 0.343977, 0.298693, 1)
+theme_override_colors/font_outline_color = Color(0.262752, 0.167262, 0.140509, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "next"
+
+[node name="rewards" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="money" type="Button" parent="rewards"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0941176, 0.243137, 0.509804, 1)
+theme_override_colors/font_outline_color = Color(0.0560342, 0.16826, 0.369066, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 56
+text = "Tips:"
+flat = true
+
+[node name="cards" type="Button" parent="rewards"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0922045, 0.241701, 0.509501, 1)
+theme_override_colors/font_outline_color = Color(0.0654674, 0.187028, 0.404539, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 56
+text = "Cards:"
+flat = true
+
+[connection signal="pressed" from="rewards/cards" to="." method="_on_cards_pressed"]
