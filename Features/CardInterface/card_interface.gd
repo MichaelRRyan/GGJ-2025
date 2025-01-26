@@ -34,7 +34,7 @@ func setup_cards(cards : Array) -> void:
 func _end_turn() -> void:
 	_discard_all()
 	turn_ended.emit()
-	$CardTray/EndTurnButton.hide()
+	$EndTurnButton.hide()
 
 
 #-------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ func _discard_all():
 
 #-------------------------------------------------------------------------------
 func _on_turn_manager_turn_started() -> void:
-	$CardTray/EndTurnButton.show()
+	$EndTurnButton.show()
 
 
 #-------------------------------------------------------------------------------

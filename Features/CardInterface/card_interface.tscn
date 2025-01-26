@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://lpakvaofoidn"]
+[gd_scene load_steps=8 format=3 uid="uid://jfrfbqkq4aur"]
 
 [ext_resource type="Script" path="res://Features/CardInterface/card_interface.gd" id="1_wyf25"]
 [ext_resource type="Texture2D" uid="uid://c4ymnoiooly8g" path="res://Features/Encounter/drawingDeck.png" id="2_par7d"]
@@ -75,7 +75,6 @@ alignment = 1
 
 [node name="Deck2" type="TextureRect" parent="CardTray"]
 layout_mode = 2
-text = "End Turn"
 texture = ExtResource("3_64asw")
 expand_mode = 2
 
