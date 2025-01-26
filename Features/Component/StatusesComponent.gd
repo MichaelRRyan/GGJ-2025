@@ -5,10 +5,10 @@ signal status_applied(status_name)
 signal status_removed(status_name)
 signal statuses_changed(statuses)
 
-var statuses: Dictionary = {} # Status : Duration
+var statuses: Dictionary = {} # Status : Modifier
 
-func apply_status(status_name: String, duration: int):
-	statuses[status_name] = duration
+func apply_status(status_name: String, modifier: int):
+	statuses[status_name] = modifier
 	emit_signal("status_applied", status_name)
 	emit_signal("statuses_changed", statuses)
 
@@ -25,11 +25,19 @@ func modify_damage(type_of_effect: String,  base_damage: int) -> int:
 	var modified_damage = base_damage
 	
 	if "Shampooed" in statuses && type_of_effect == "WashdownEffect":
-		modified_damage *= 2
+		modified_damage *= statuses["Shampooed"]
 		remove_status("Shampooed")
+		apply_status("Shampooed + Washed", 5)
+		return modified_damage
 	if "Soaped" in statuses  && type_of_effect == "ScrubEffect":
-		modified_damage *= 2
+		modified_damage *= statuses["Soaped"]
 		remove_status("Soaped")
+		return modified_damage
+	if "Shampooed + Washed" in statuses && type_of_effect == "ConditionerEffect":
+		modified_damage *= statuses["Shampooed + Washed"]
+		remove_status("Shampooed + Washed")
+		return modified_damage
+		
 	return modified_damage
 
 func decrement_statuses():
