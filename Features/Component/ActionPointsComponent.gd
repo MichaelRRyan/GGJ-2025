@@ -15,4 +15,4 @@ func modify(amount: int):
 	action_points_changed.emit(current_action_points, max_action_points)
 	
 func reset():
-	current_action_points = max_action_points
+	call_deferred("modify", max_action_points)

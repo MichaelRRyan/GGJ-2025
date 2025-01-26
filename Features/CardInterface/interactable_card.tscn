@@ -60,6 +60,7 @@ text = "25"
 horizontal_alignment = 1
 
 [node name="CardName" type="Label" parent="TextureButton"]
+layout_mode = 0
 offset_left = 42.0
 offset_top = 42.0
 offset_right = 108.0
@@ -70,6 +71,7 @@ text = "Card Name"
 horizontal_alignment = 1
 
 [node name="CardDescription" type="Label" parent="TextureButton"]
+layout_mode = 0
 offset_left = 34.0
 offset_top = 154.0
 offset_right = 120.0

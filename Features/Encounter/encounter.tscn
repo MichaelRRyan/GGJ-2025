@@ -1,16 +1,59 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfxcvq13dhr0n"]
+[gd_scene load_steps=20 format=3 uid="uid://dfxcvq13dhr0n"]
 
 [ext_resource type="Script" path="res://Features/Encounter/Encounter.gd" id="1_dcat6"]
 [ext_resource type="PackedScene" uid="uid://b425p5v0uckgl" path="res://Features/TurnManager/turn_manager.tscn" id="1_ic1e4"]
 [ext_resource type="PackedScene" uid="uid://lpakvaofoidn" path="res://Features/CardInterface/card_interface.tscn" id="2_53jat"]
 [ext_resource type="PackedScene" uid="uid://ds25e0iuelde8" path="res://Features/Cards/card_manager.tscn" id="3_0ndc0"]
 [ext_resource type="PackedScene" uid="uid://dqig0ruy5ltgr" path="res://Features/Component/health_component.tscn" id="3_8leue"]
+[ext_resource type="Texture2D" uid="uid://tb5ggwnjebbq" path="res://Features/Encounter/background_plain.png" id="5_r5eax"]
 [ext_resource type="PackedScene" uid="uid://c7kr7a00copnf" path="res://Features/HealthBar/health_bar.tscn" id="6_0rfqi"]
-[ext_resource type="Texture2D" uid="uid://cop8t73wqabim" path="res://icon.svg" id="7_tsc4v"]
+[ext_resource type="Texture2D" uid="uid://bbc1ey6kb5vwy" path="res://Features/Encounter/bath.png" id="6_q2lg5"]
 [ext_resource type="PackedScene" uid="uid://ctdku42sdd42e" path="res://Features/Component/action_points_component.tscn" id="8_8dgu4"]
-[ext_resource type="Texture2D" uid="uid://blsehpidm40ah" path="res://Features/Encounter/background.png" id="8_17wk5"]
 [ext_resource type="PackedScene" uid="uid://d2acg8x7mxuoq" path="res://Features/Component/exhaustion_component.tscn" id="9_sw7f1"]
+[ext_resource type="Texture2D" uid="uid://bpcuce7uva4x5" path="res://Features/Encounter/duck_spirit.png" id="11_oax27"]
 [ext_resource type="PackedScene" uid="uid://bkiyneegax4em" path="res://Features/Component/statuses_component.tscn" id="11_we85r"]
+[ext_resource type="Script" path="res://Features/Encounter/scene_change.gd" id="12_3r0hf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow0cc"]
+bg_color = Color(0.552372, 0.784647, 0.436314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2gyo"]
+bg_color = Color(0.930481, 0.46936, 0.341457, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2v5e"]
+bg_color = Color(0.976189, 0.978029, 0.98204, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kstw8"]
+bg_color = Color(0.35855, 0.65559, 0.855479, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5744"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l4cb"]
+bg_color = Color(0.535828, 0.824552, 0.96144, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Encounter" type="Node2D"]
 script = ExtResource("1_dcat6")
@@ -22,9 +65,14 @@ script = ExtResource("1_dcat6")
 [node name="CardInterface" parent="." instance=ExtResource("2_53jat")]
 
 [node name="BackgroundImage" type="Sprite2D" parent="."]
-position = Vector2(571, 317)
-scale = Vector2(0.609259, 0.609259)
-texture = ExtResource("8_17wk5")
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_r5eax")
+
+[node name="BathImage" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_q2lg5")
 
 [node name="Player" type="Node2D" parent="."]
 
@@ -32,47 +80,89 @@ texture = ExtResource("8_17wk5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player"]
 
-[node name="Bar" parent="Player/CanvasLayer" instance=ExtResource("6_0rfqi")]
-anchors_preset = 10
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 40.0
-grow_vertical = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="Player/CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -231.0
+offset_right = 190.0
+offset_bottom = -151.0
+grow_vertical = 0
+theme_override_constants/separation = 20
+metadata/_edit_group_ = true
+
+[node name="ExhaustionBar" parent="Player/CanvasLayer/VBoxContainer" instance=ExtResource("6_0rfqi")]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ow0cc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q2gyo")
+
+[node name="ActionPointsBar" parent="Player/CanvasLayer/VBoxContainer" instance=ExtResource("6_0rfqi")]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_r2v5e")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kstw8")
+max_value = 3.0
+
+[node name="actionpointText" type="Label" parent="Player/CanvasLayer"]
+offset_left = 16.0
+offset_top = 446.0
+offset_right = 110.0
+offset_bottom = 469.0
+text = "Action Point
+"
+
+[node name="exhuastionText" type="Label" parent="Player/CanvasLayer"]
+offset_left = 16.0
+offset_top = 394.0
+offset_right = 102.0
+offset_bottom = 417.0
+text = "Exhaustion"
 
 [node name="ActionPointsComponent" parent="Player" instance=ExtResource("8_8dgu4")]
 
 [node name="ExhaustionComponent" parent="Player" instance=ExtResource("9_sw7f1")]
 
 [node name="Spirit" type="Node2D" parent="."]
-position = Vector2(564, 305)
-metadata/_edit_group_ = true
+position = Vector2(576, 324)
 
 [node name="HealthComponent" parent="Spirit" instance=ExtResource("3_8leue")]
 
-[node name="Bar" parent="Spirit" instance=ExtResource("6_0rfqi")]
+[node name="Sprite2D" type="Sprite2D" parent="Spirit"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_oax27")
+
+[node name="CleanlinessBar" parent="Spirit" instance=ExtResource("6_0rfqi")]
 anchors_preset = 0
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -56.0
-offset_top = 71.0
-offset_right = 56.0
-offset_bottom = 90.0
+offset_left = -153.0
+offset_top = -312.0
+offset_right = 154.0
+offset_bottom = -285.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="Spirit"]
-texture = ExtResource("7_tsc4v")
+theme_override_styles/background = SubResource("StyleBoxFlat_h5744")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1l4cb")
+value = 5.0
 
 [node name="StatusesComponent" parent="Spirit" instance=ExtResource("11_we85r")]
+
+[node name="SceneChange" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_3r0hf")
 
 [connection signal="draw_cards" from="TurnManager" to="CardManager" method="draw_cards"]
 [connection signal="card_played" from="CardInterface" to="CardManager" method="play_card"]
 [connection signal="turn_ended" from="CardInterface" to="TurnManager" method="_on_card_interface_turn_ended"]
 [connection signal="turn_ended" from="CardInterface" to="CardManager" method="_on_card_interface_turn_ended"]
+[connection signal="action_points_changed" from="Player/ActionPointsComponent" to="Player/CanvasLayer/VBoxContainer/ActionPointsBar" method="_on_health_component_health_changed"]
+[connection signal="health_changed" from="Spirit/HealthComponent" to="Spirit/CleanlinessBar" method="_on_health_component_health_changed"]
+[connection signal="health_changed" from="Spirit/HealthComponent" to="SceneChange" method="_on_health_component_health_changed"]

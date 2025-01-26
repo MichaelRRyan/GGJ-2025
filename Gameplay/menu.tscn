@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0ou4uegicxn8"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_1p8w8"]
+[ext_resource type="Texture2D" uid="uid://blsehpidm40ah" path="res://Features/Encounter/background.png" id="2_dhqoo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7fjf"]
+
+[sub_resource type="SystemFont" id="SystemFont_mj2ej"]
+font_names = PackedStringArray("Cursive")
+oversampling = 10.0
+
+[sub_resource type="SystemFont" id="SystemFont_wk71o"]
+font_names = PackedStringArray("Monospace")
+oversampling = 10.0
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_vj1p7"]
+
+[sub_resource type="SystemFont" id="SystemFont_2o10w"]
+font_names = PackedStringArray("Monospace")
+oversampling = 10.0
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1p8w8")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(578, 326.5)
+scale = Vector2(0.609375, 0.615741)
+texture = ExtResource("2_dhqoo")
+
+[node name="BoxContainer2" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.0
+offset_top = -257.0
+offset_right = 217.0
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="title" type="Label" parent="BoxContainer2"]
+material = SubResource("ShaderMaterial_k7fjf")
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.520103, 0.772049, 0.780588, 1)
+theme_override_colors/font_outline_color = Color(0.0431373, 0.388235, 0.529412, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = SubResource("SystemFont_mj2ej")
+theme_override_font_sizes/font_size = 55
+text = "Spirit Bathhouse"
+
+[node name="play" type="Button" parent="BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.37648, 0.688732, 0.673139, 1)
+theme_override_colors/font_outline_color = Color(0.743219, 1, 0.998426, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_wk71o")
+theme_override_font_sizes/font_size = 26
+text = "Play Game"
+icon = SubResource("Texture2DRD_vj1p7")
+flat = true
+
+[node name="quit" type="Button" parent="BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.442362, 0.745537, 0.694661, 1)
+theme_override_colors/font_outline_color = Color(0.745098, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_2o10w")
+theme_override_font_sizes/font_size = 26
+text = "Quit"
+flat = true
+
+[connection signal="pressed" from="BoxContainer2/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="BoxContainer2/quit" to="." method="_on_quit_pressed"]
