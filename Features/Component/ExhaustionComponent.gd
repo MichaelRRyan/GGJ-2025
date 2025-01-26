@@ -1,7 +1,7 @@
 extends Node
 class_name ExhaustionComponent
 
-signal exhaustion_changed(new_health, max_health)
+signal exhaustion_changed(new_exhaustion, max_exhaustion_amount)
 
 var max_exhaustion_amount: int = 100
 var current_exhaustion_amount: int

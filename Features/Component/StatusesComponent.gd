@@ -21,13 +21,13 @@ func remove_status(status_name: String):
 func has_status(status_name: String) -> bool:
 	return status_name in statuses
 
-func modify_damage(type_of_effect: Object,  base_damage: int) -> int:
+func modify_damage(type_of_effect: String,  base_damage: int) -> int:
 	var modified_damage = base_damage
 	
-	if "Shampooed" in statuses && type_of_effect is WashdownEffect:
+	if "Shampooed" in statuses && type_of_effect == "WashdownEffect":
 		modified_damage *= 2
 		remove_status("Shampooed")
-	if "Soaped" in statuses  && type_of_effect is ScrubEffect:
+	if "Soaped" in statuses  && type_of_effect == "ScrubEffect":
 		modified_damage *= 2
 		remove_status("Soaped")
 	return modified_damage
