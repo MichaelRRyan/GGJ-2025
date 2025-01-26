@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfxcvq13dhr0n"]
+[gd_scene load_steps=19 format=3 uid="uid://dfxcvq13dhr0n"]
 
 [ext_resource type="Script" path="res://Features/Encounter/Encounter.gd" id="1_dcat6"]
 [ext_resource type="PackedScene" uid="uid://b425p5v0uckgl" path="res://Features/TurnManager/turn_manager.tscn" id="1_ic1e4"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" path="res://action_points_component.tscn" id="8_8dgu4"]
 [ext_resource type="PackedScene" path="res://exhaustion_component.tscn" id="9_sw7f1"]
 [ext_resource type="Texture2D" uid="uid://bpcuce7uva4x5" path="res://Features/Encounter/duck_spirit.png" id="11_oax27"]
+[ext_resource type="Script" path="res://Features/Encounter/scene_change.gd" id="12_3r0hf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow0cc"]
 bg_color = Color(0.552372, 0.784647, 0.436314, 1)
@@ -83,10 +84,11 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
-offset_top = -223.0
+offset_top = -231.0
 offset_right = 190.0
 offset_bottom = -151.0
 grow_vertical = 0
+theme_override_constants/separation = 20
 metadata/_edit_group_ = true
 
 [node name="ExhaustionBar" parent="Player/CanvasLayer/VBoxContainer" instance=ExtResource("6_0rfqi")]
@@ -98,9 +100,25 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_q2gyo")
 [node name="ActionPointsBar" parent="Player/CanvasLayer/VBoxContainer" instance=ExtResource("6_0rfqi")]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_styles/background = SubResource("StyleBoxFlat_r2v5e")
 theme_override_styles/fill = SubResource("StyleBoxFlat_kstw8")
 max_value = 3.0
+
+[node name="actionpointText" type="Label" parent="Player/CanvasLayer"]
+offset_left = 16.0
+offset_top = 446.0
+offset_right = 110.0
+offset_bottom = 469.0
+text = "Action Point
+"
+
+[node name="exhuastionText" type="Label" parent="Player/CanvasLayer"]
+offset_left = 16.0
+offset_top = 394.0
+offset_right = 102.0
+offset_bottom = 417.0
+text = "Exhaustion"
 
 [node name="ActionPointsComponent" parent="Player" instance=ExtResource("8_8dgu4")]
 
@@ -131,6 +149,13 @@ theme_override_styles/background = SubResource("StyleBoxFlat_h5744")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1l4cb")
 value = 5.0
 
+[node name="SceneChange" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_3r0hf")
+
 [connection signal="draw_cards" from="TurnManager" to="CardManager" method="draw_cards"]
 [connection signal="card_played" from="CardInterface" to="CardManager" method="play_card"]
 [connection signal="turn_ended" from="CardInterface" to="TurnManager" method="_on_card_interface_turn_ended"]
@@ -138,3 +163,4 @@ value = 5.0
 [connection signal="action_points_changed" from="Player/ActionPointsComponent" to="Player/CanvasLayer/VBoxContainer/ActionPointsBar" method="_on_health_component_health_changed"]
 [connection signal="exhaustion_amount_changed" from="Player/ExhaustionComponent" to="Player/CanvasLayer/VBoxContainer/ExhaustionBar" method="_on_health_component_health_changed"]
 [connection signal="health_changed" from="Spirit/HealthComponent" to="Spirit/CleanlinessBar" method="_on_health_component_health_changed"]
+[connection signal="health_changed" from="Spirit/HealthComponent" to="SceneChange" method="_on_health_component_health_changed"]
