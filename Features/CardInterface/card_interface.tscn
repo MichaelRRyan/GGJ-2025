@@ -1,7 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://lpakvaofoidn"]
+[gd_scene load_steps=7 format=3 uid="uid://lpakvaofoidn"]
 
 [ext_resource type="Script" path="res://Features/CardInterface/card_interface.gd" id="1_wyf25"]
 [ext_resource type="Texture2D" uid="uid://cop8t73wqabim" path="res://icon.svg" id="2_0ryxl"]
+
+[sub_resource type="SystemFont" id="SystemFont_atm4e"]
+
+[sub_resource type="Theme" id="Theme_iilqv"]
+default_font = SubResource("SystemFont_atm4e")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ix1ri"]
+bg_color = Color(0.784314, 0.945098, 0.937255, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.567505, 0.809406, 0.801123, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxkew"]
+bg_color = Color(0.784314, 0.945098, 0.937255, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.567505, 0.809406, 0.801123, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [node name="CardInterface" type="CanvasLayer"]
 script = ExtResource("1_wyf25")
@@ -30,6 +59,13 @@ alignment = 1
 [node name="EndTurnButton" type="Button" parent="CardTray"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "End Turn"
+theme = SubResource("Theme_iilqv")
+theme_override_colors/font_color = Color(0.694118, 0.517647, 0.356863, 1)
+theme_override_colors/font_outline_color = Color(0.529412, 0.376471, 0.235294, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 26
+theme_override_styles/hover = SubResource("StyleBoxFlat_ix1ri")
+theme_override_styles/normal = SubResource("StyleBoxFlat_fxkew")
+text = "End Turn "
 
 [connection signal="pressed" from="CardTray/EndTurnButton" to="." method="_end_turn"]
