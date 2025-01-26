@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0ou4uegicxn8"]
+[gd_scene load_steps=9 format=3 uid="uid://c0ou4uegicxn8"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_1p8w8"]
 [ext_resource type="Texture2D" uid="uid://blsehpidm40ah" path="res://Features/Encounter/background.png" id="2_dhqoo"]
+[ext_resource type="Texture2D" uid="uid://dpbhrniwwl7x1" path="res://Features/Encounter/title.png" id="3_ngd6c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k7fjf"]
 
@@ -57,12 +58,13 @@ theme_override_colors/font_outline_color = Color(0.0431373, 0.388235, 0.529412, 
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = SubResource("SystemFont_mj2ej")
 theme_override_font_sizes/font_size = 55
-text = "Spirit Bathhouse"
+text = " 
+"
 
 [node name="play" type="Button" parent="BoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.37648, 0.688732, 0.673139, 1)
-theme_override_colors/font_outline_color = Color(0.743219, 1, 0.998426, 1)
+theme_override_colors/font_color = Color(0.54902, 0.701961, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.701961, 0.8, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = SubResource("SystemFont_wk71o")
 theme_override_font_sizes/font_size = 26
@@ -72,13 +74,18 @@ flat = true
 
 [node name="quit" type="Button" parent="BoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.442362, 0.745537, 0.694661, 1)
-theme_override_colors/font_outline_color = Color(0.745098, 1, 1, 1)
+theme_override_colors/font_color = Color(0.54902, 0.701961, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0.54902, 0.701961, 0.8, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = SubResource("SystemFont_2o10w")
 theme_override_font_sizes/font_size = 26
 text = "Quit"
 flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(589, 205)
+scale = Vector2(0.387963, 0.387963)
+texture = ExtResource("3_ngd6c")
 
 [connection signal="pressed" from="BoxContainer2/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="BoxContainer2/quit" to="." method="_on_quit_pressed"]

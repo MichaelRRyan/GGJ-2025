@@ -15,6 +15,7 @@ func _ready() -> void:
 func draw_cards():
 	_hand_cards.append_array(_draw_deck.draw(_max_hand_size))
 	
+	
 	# If the deck runs out, reshuffle the discard pile and redraw
 	if _hand_cards.size() < _max_hand_size:
 		var discards : Array = _discard_deck.draw(1000) # Rediculously high number so all cards are drawn

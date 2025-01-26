@@ -2,27 +2,27 @@
 
 [ext_resource type="Script" path="res://Features/Encounter/Encounter.gd" id="1_dcat6"]
 [ext_resource type="PackedScene" uid="uid://b425p5v0uckgl" path="res://Features/TurnManager/turn_manager.tscn" id="1_ic1e4"]
-[ext_resource type="PackedScene" uid="uid://lpakvaofoidn" path="res://Features/CardInterface/card_interface.tscn" id="2_53jat"]
-[ext_resource type="PackedScene" uid="uid://ds25e0iuelde8" path="res://Features/Cards/card_manager.tscn" id="3_0ndc0"]
+[ext_resource type="PackedScene" path="res://Features/CardInterface/card_interface.tscn" id="2_53jat"]
+[ext_resource type="PackedScene" uid="uid://5p2d4q285u3m" path="res://Features/Cards/card_manager.tscn" id="3_0ndc0"]
 [ext_resource type="PackedScene" uid="uid://dqig0ruy5ltgr" path="res://Features/Component/health_component.tscn" id="3_8leue"]
 [ext_resource type="Texture2D" uid="uid://tb5ggwnjebbq" path="res://Features/Encounter/background_plain.png" id="5_r5eax"]
 [ext_resource type="PackedScene" uid="uid://c7kr7a00copnf" path="res://Features/HealthBar/health_bar.tscn" id="6_0rfqi"]
 [ext_resource type="Texture2D" uid="uid://bbc1ey6kb5vwy" path="res://Features/Encounter/bath.png" id="6_q2lg5"]
-[ext_resource type="PackedScene" uid="uid://ctdku42sdd42e" path="res://Features/Component/action_points_component.tscn" id="8_8dgu4"]
-[ext_resource type="PackedScene" uid="uid://d2acg8x7mxuoq" path="res://Features/Component/exhaustion_component.tscn" id="9_sw7f1"]
+[ext_resource type="PackedScene" path="res://Features/Component/action_points_component.tscn" id="8_8dgu4"]
+[ext_resource type="PackedScene" path="res://Features/Component/exhaustion_component.tscn" id="9_sw7f1"]
 [ext_resource type="Texture2D" uid="uid://bpcuce7uva4x5" path="res://Features/Encounter/duck_spirit.png" id="11_oax27"]
-[ext_resource type="PackedScene" uid="uid://bkiyneegax4em" path="res://Features/Component/statuses_component.tscn" id="11_we85r"]
+[ext_resource type="PackedScene" path="res://Features/Component/statuses_component.tscn" id="11_we85r"]
 [ext_resource type="Script" path="res://Features/Encounter/scene_change.gd" id="12_3r0hf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow0cc"]
-bg_color = Color(0.552372, 0.784647, 0.436314, 1)
+bg_color = Color(0.929412, 0.470588, 0.341176, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2gyo"]
-bg_color = Color(0.930481, 0.46936, 0.341457, 1)
+bg_color = Color(0.617283, 1, 0.612874, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
