@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dfxcvq13dhr0n"]
+[gd_scene load_steps=22 format=3 uid="uid://dfxcvq13dhr0n"]
 
 [ext_resource type="Script" path="res://Features/Encounter/Encounter.gd" id="1_dcat6"]
 [ext_resource type="PackedScene" uid="uid://b425p5v0uckgl" path="res://Features/TurnManager/turn_manager.tscn" id="1_ic1e4"]
@@ -10,9 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://bbc1ey6kb5vwy" path="res://Features/Encounter/bath.png" id="6_q2lg5"]
 [ext_resource type="PackedScene" path="res://action_points_component.tscn" id="8_8dgu4"]
 [ext_resource type="PackedScene" uid="uid://c6j2l2b7ff5xt" path="res://exhaustion_component.tscn" id="9_sw7f1"]
-[ext_resource type="Texture2D" uid="uid://bpcuce7uva4x5" path="res://Features/Encounter/duck_spirit.png" id="11_oax27"]
+[ext_resource type="Texture2D" uid="uid://bpcuce7uva4x5" path="res://Features/Spirit/Images/Characters/duck_spirit.png" id="11_oax27"]
 [ext_resource type="Script" path="res://Features/Spirit/spirit_behaviour.gd" id="11_qvtpb"]
 [ext_resource type="Script" path="res://Features/Encounter/scene_change.gd" id="12_3r0hf"]
+[ext_resource type="Texture2D" uid="uid://b186q43ttf72r" path="res://Features/Spirit/Images/Mud/duck_spirit_mud.png" id="13_eao3v"]
+[ext_resource type="Texture2D" uid="uid://c8wwmai57m5qn" path="res://Features/Spirit/Images/Mud/duck_spirit_mud_max.png" id="14_gyms7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow0cc"]
 bg_color = Color(0.552372, 0.784647, 0.436314, 1)
@@ -135,6 +137,14 @@ script = ExtResource("11_qvtpb")
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("11_oax27")
 
+[node name="MudSprite" type="Sprite2D" parent="Spirit"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("13_eao3v")
+
+[node name="MaxMudSprite" type="Sprite2D" parent="Spirit"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("14_gyms7")
+
 [node name="CleanlinessBar" parent="Spirit" instance=ExtResource("6_0rfqi")]
 anchors_preset = 0
 anchor_left = 0.0
@@ -151,6 +161,19 @@ theme_override_styles/background = SubResource("StyleBoxFlat_h5744")
 theme_override_styles/fill = SubResource("StyleBoxFlat_1l4cb")
 value = 5.0
 
+[node name="ActionLabel" type="Label" parent="Spirit"]
+visible = false
+offset_left = -157.0
+offset_top = -65.0
+offset_right = 151.0
+offset_bottom = -33.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 23
+text = "Thinking..."
+horizontal_alignment = 1
+
 [node name="TurnTimer" type="Timer" parent="Spirit"]
 one_shot = true
 
@@ -162,6 +185,7 @@ offset_bottom = 40.0
 script = ExtResource("12_3r0hf")
 
 [connection signal="draw_cards" from="TurnManager" to="CardManager" method="draw_cards"]
+[connection signal="draw_cards" from="TurnManager" to="CardInterface" method="_on_turn_manager_turn_started"]
 [connection signal="spirits_turn_started" from="TurnManager" to="Spirit" method="_on_turn_manager_spirits_turn_started"]
 [connection signal="card_played" from="CardInterface" to="CardManager" method="play_card"]
 [connection signal="turn_ended" from="CardInterface" to="TurnManager" method="_on_card_interface_turn_ended"]
@@ -169,6 +193,7 @@ script = ExtResource("12_3r0hf")
 [connection signal="action_points_changed" from="Player/ActionPointsComponent" to="Player/CanvasLayer/VBoxContainer/ActionPointsBar" method="_on_health_component_health_changed"]
 [connection signal="exhaustion_amount_changed" from="Player/ExhaustionComponent" to="Player/CanvasLayer/VBoxContainer/ExhaustionBar" method="_on_health_component_health_changed"]
 [connection signal="turn_finished" from="Spirit" to="TurnManager" method="_on_spirit_turn_finished"]
+[connection signal="health_changed" from="Spirit/HealthComponent" to="Spirit" method="_on_health_component_health_changed"]
 [connection signal="health_changed" from="Spirit/HealthComponent" to="Spirit/CleanlinessBar" method="_on_health_component_health_changed"]
 [connection signal="health_changed" from="Spirit/HealthComponent" to="SceneChange" method="_on_health_component_health_changed"]
 [connection signal="timeout" from="Spirit/TurnTimer" to="Spirit" method="_on_turn_timer_timeout"]

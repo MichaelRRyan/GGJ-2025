@@ -14,12 +14,6 @@ signal card_played(card : Card)
 
 
 #-------------------------------------------------------------------------------
-# TODO Move this to card manager
-func shuffle() -> void:
-	pass
-
-
-#-------------------------------------------------------------------------------
 func setup_cards(cards : Array) -> void:
 	_discard_all()
 	
@@ -35,6 +29,7 @@ func setup_cards(cards : Array) -> void:
 func _end_turn() -> void:
 	_discard_all()
 	turn_ended.emit()
+	$CardTray/EndTurnButton.hide()
 
 
 #-------------------------------------------------------------------------------
@@ -56,3 +51,11 @@ func _discard_all():
 	
 	for card in cards:
 		card.queue_free() # Deletes the card UI node
+
+
+#-------------------------------------------------------------------------------
+func _on_turn_manager_turn_started() -> void:
+	$CardTray/EndTurnButton.show()
+
+
+#-------------------------------------------------------------------------------

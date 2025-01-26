@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpcuce7uva4x5"
-path="res://.godot/imported/duck_spirit.png-7cf4b3638da3abc2575e4776ff9f8804.ctex"
+path="res://.godot/imported/duck_spirit.png-5471f29d2de44799b7e20ed599a5603d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Features/Encounter/duck_spirit.png"
-dest_files=["res://.godot/imported/duck_spirit.png-7cf4b3638da3abc2575e4776ff9f8804.ctex"]
+source_file="res://Features/Spirit/Images/Characters/duck_spirit.png"
+dest_files=["res://.godot/imported/duck_spirit.png-5471f29d2de44799b7e20ed599a5603d.ctex"]
 
 [params]
 
